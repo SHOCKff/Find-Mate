@@ -23,7 +23,6 @@ navigator.geolocation.watchPosition(
         socket.emit("Client_data", { latitude, longitude });
     },
     error => { console.error(error) },
-    { enableHighAccuracy: true }
 );
 
 // Show position of user when another user lands
