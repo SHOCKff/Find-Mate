@@ -12,18 +12,21 @@ const socket = io();
 const roomid = new URLSearchParams(window.location.search).get('roomid');
 socket.emit("joinRoom", roomid);
 
-// Get current location while connected
-navigator.geolocation.watchPosition(
-    function (position) {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        const accuracy = position.coords.accuracy;
-        my_position = [latitude, longitude, accuracy];
-        if (!obj) obj = landed();
-        socket.emit("Client_data", { latitude, longitude });
-    },
-    error => { console.error(error) },
-);
+// Get current location while connected with a timeout value
+const intervalId = setInterval(async () => {
+    await navigator.geolocation.getCurrentPosition(
+        function (position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const accuracy = position.coords.accuracy;
+            my_position = [latitude, longitude, accuracy];
+            if (!obj) obj = landed();
+            socket.emit("Client_data", { latitude, longitude });
+        },
+        error => { console.error(error) },
+        { enableHighAccuracy: true }
+    );
+}, 2000); // Runs every 2 seconds
 
 // Show position of user when another user lands
 function landed() {
