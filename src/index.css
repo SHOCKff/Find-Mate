@@ -11,4 +11,6 @@
 
 }
 
-
+.leaflet-routing-container leaflet-bar leaflet-routing-container-hide leaflet-control{
+    visibility: none;
+}
