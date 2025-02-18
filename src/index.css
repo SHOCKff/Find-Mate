@@ -1,39 +1,14 @@
-*{
+* {
     margin: 0;
     padding: 0;
     user-select: none;
 }
 
 
-#side_menu {
-    background-color: rgb(102, 71, 71);
-    color: white;
+#map {
     height: 100vh;
-    width: 10vw;
-    border: 2.5px solid white;
-    border-radius: 10px;
-    border-right: 0px;
-    position: absolute; /* Removes the div from the normal flow and positions it */
-    right: 0; /* Aligns it to the right side */
-    display: flex;
+    width: 100vw;
 
 }
 
 
- #logs_box{
-    position: fixed;
-    width :100vw;
-    bottom: 0px;
-    height: 10vh;
-    border: 2.5px solid white;
-    border-radius: 5px;
-    text-align: center;
-    background-color: rgb(136, 197, 177);
- }
-
- #map {
-    height: 89vh;
-    width : 89vw;
-    flex-grow: 1; 
-    border: 2px solid black;
-}
